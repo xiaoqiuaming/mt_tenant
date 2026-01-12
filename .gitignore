@@ -1,0 +1,40 @@
+# Build directories
+build/
+cmake-build-*/
+out/
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+CMakeUserPresets.json
+cmake_install.cmake
+Makefile
+*.make
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.project
+*.cproject
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Compiled files
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+*.dll
+
+# Config
+config.ini.local
+*.log
+
+# Test outputs
+test_results/
