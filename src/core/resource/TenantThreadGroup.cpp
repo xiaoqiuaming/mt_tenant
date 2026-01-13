@@ -1,5 +1,5 @@
-#include "TenantThreadGroup.h"
-#include "CgroupController.h"
+#include "core/resource/TenantThreadGroup.h"
+#include "core/resource/CgroupController.h"
 #include <algorithm>
 #include <iostream>
 #include <chrono>
@@ -23,7 +23,7 @@ void WorkerThread::start() {
 
     // Add thread to cgroup if available
     if (cgroup_) {
-        cgroup_->addThread(getId());
+        cgroup_->addThread(tenantId_, getId());
     }
 }
 
@@ -37,7 +37,7 @@ void WorkerThread::stop() {
 
     // Remove thread from cgroup
     if (cgroup_) {
-        cgroup_->removeThread(getId());
+        cgroup_->removeThread(tenantId_, getId());
     }
 }
 

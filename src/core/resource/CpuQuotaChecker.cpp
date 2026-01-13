@@ -1,6 +1,6 @@
-#include "CpuQuotaChecker.h"
-#include "CpuResourceManager.h"
-#include "../tenant/TenantManager.h"
+#include "core/resource/CpuQuotaChecker.h"
+#include "core/resource/CpuResourceManager.h"
+#include "core/tenant/TenantManager.h"
 #include <iostream>
 
 namespace yao {

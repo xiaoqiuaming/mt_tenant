@@ -50,7 +50,31 @@ private:
         double allocatedMB = 0.0;      // 已分配内存
         double usedMB = 0.0;           // 当前使用内存
         double quotaMB = 0.0;          // 内存配额
-        std::atomic<double> peakUsage = 0.0;  // 峰值使用
+        std::atomic<double> peakUsage;  // 峰值使用
+
+        MemoryStats() : allocatedMB(0.0), usedMB(0.0), quotaMB(0.0), peakUsage(0.0) {}
+        MemoryStats(double quota, double allocated, double used, double peak)
+            : allocatedMB(allocated), usedMB(used), quotaMB(quota), peakUsage(peak) {}
+        
+        // Move constructor
+        MemoryStats(MemoryStats&& other) noexcept
+            : allocatedMB(other.allocatedMB)
+            , usedMB(other.usedMB)
+            , quotaMB(other.quotaMB)
+            , peakUsage(other.peakUsage.load()) {}
+        
+        // Move assignment
+        MemoryStats& operator=(MemoryStats&& other) noexcept {
+            allocatedMB = other.allocatedMB;
+            usedMB = other.usedMB;
+            quotaMB = other.quotaMB;
+            peakUsage.store(other.peakUsage.load());
+            return *this;
+        }
+        
+        // Delete copy
+        MemoryStats(const MemoryStats&) = delete;
+        MemoryStats& operator=(const MemoryStats&) = delete;
     };
 
     std::unordered_map<std::string, MemoryStats> tenantMemoryStats_;

@@ -1,12 +1,12 @@
-#include "SqlServer.h"
-#include "ConnectionManager.h"
-#include "ThreadPoolManager.h"
-#include "CpuResourceManager.h"
-#include "MemoryResourceManager.h"
-#include "MemoryQuotaChecker.h"
-#include "ConfigManager.h"
-#include "ResourceStats.h"
-#include "BasicResourceStats.h"
+#include "server/sql/SqlServer.h"
+#include "server/sql/ConnectionManager.h"
+#include "core/resource/ThreadPoolManager.h"
+#include "core/resource/CpuResourceManager.h"
+#include "core/resource/MemoryResourceManager.h"
+#include "core/resource/MemoryQuotaChecker.h"
+#include "common/config/ConfigManager.h"
+#include "core/resource/ResourceStats.h"
+#include "core/resource/BasicResourceStats.h"
 #include <iostream>
 #include <memory>
 

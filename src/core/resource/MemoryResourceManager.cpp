@@ -1,5 +1,5 @@
-#include "MemoryResourceManager.h"
-#include "TenantContext.h"
+#include "core/resource/MemoryResourceManager.h"
+#include "core/tenant/TenantContext.h"
 #include <iostream>
 #include <algorithm>
 
@@ -43,13 +43,7 @@ bool MemoryResourceManager::allocateMemoryResource(const std::shared_ptr<TenantC
     }
 
     // 分配内存资源
-    MemoryStats stats;
-    stats.quotaMB = memoryQuotaMB;
-    stats.allocatedMB = 0.0;
-    stats.usedMB = 0.0;
-    stats.peakUsage = 0.0;
-
-    tenantMemoryStats_[tenantId] = stats;
+    tenantMemoryStats_.emplace(tenantId, MemoryStats{memoryQuotaMB, 0.0, 0.0, {0.0}});
     allocatedTotalMB_ += memoryQuotaMB;
 
     std::cout << "Allocated " << memoryQuotaMB << " MB memory for tenant: " << tenantId << std::endl;

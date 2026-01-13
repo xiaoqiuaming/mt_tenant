@@ -1,4 +1,4 @@
-#include "TransServer.h"
+#include "server/trans/TransServer.h"
 #include <iostream>
 
 namespace yao {

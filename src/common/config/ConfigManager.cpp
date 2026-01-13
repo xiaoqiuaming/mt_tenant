@@ -1,4 +1,4 @@
-#include "ConfigManager.h"
+#include "common/config/ConfigManager.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -66,6 +66,18 @@ bool ConfigManager::getBool(const std::string& key, bool defaultValue) const {
         }
     }
     return defaultValue;
+}
+
+void ConfigManager::setString(const std::string& key, const std::string& value) {
+    m_config[key] = value;
+}
+
+void ConfigManager::setInt(const std::string& key, int value) {
+    m_config[key] = std::to_string(value);
+}
+
+void ConfigManager::setBool(const std::string& key, bool value) {
+    m_config[key] = value ? "true" : "false";
 }
 
 } // namespace yao

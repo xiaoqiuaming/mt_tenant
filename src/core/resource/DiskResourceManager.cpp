@@ -1,5 +1,5 @@
-#include "DiskResourceManager.h"
-#include "TenantContext.h"
+#include "core/resource/DiskResourceManager.h"
+#include "core/tenant/TenantContext.h"
 #include <iostream>
 #include <algorithm>
 
@@ -43,13 +43,7 @@ bool DiskResourceManager::allocateDiskResource(const std::shared_ptr<TenantConte
     }
 
     // 分配磁盘资源
-    DiskStats stats;
-    stats.quotaGB = diskQuotaGB;
-    stats.allocatedGB = 0.0;
-    stats.usedGB = 0.0;
-    stats.peakUsage = 0.0;
-
-    tenantDiskStats_[tenantId] = stats;
+    tenantDiskStats_.emplace(tenantId, DiskStats(diskQuotaGB, 0.0, 0.0, 0.0));
     allocatedTotalGB_ += diskQuotaGB;
 
     std::cout << "Allocated " << diskQuotaGB << " GB disk for tenant: " << tenantId << std::endl;

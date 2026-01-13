@@ -1,6 +1,6 @@
 #pragma once
 
-#include "TenantContext.h"
+#include "core/tenant/TenantContext.h"
 #include <unordered_map>
 #include <memory>
 #include <mutex>

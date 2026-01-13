@@ -1,9 +1,10 @@
-#include "CgroupController.h"
+#include "core/resource/CgroupController.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
 #include <filesystem>
 #include <system_error>
+#include <algorithm>
 
 namespace fs = std::filesystem;
 
@@ -28,7 +29,7 @@ bool CgroupController::initialize() {
         }
 
         // 设置目录权限
-        fs::permissions(basePath_, fs::perms::owner_all | fs::perms::group_read | fs::perms::group_execute);
+        fs::permissions(basePath_, fs::perms::owner_all | fs::perms::group_read | fs::perms::group_exec);
 
         return true;
     } catch (const fs::filesystem_error& e) {
@@ -54,7 +55,7 @@ bool CgroupController::createTenantCgroup(const std::string& tenantId, int cpuSh
         }
 
         // 初始化线程列表
-        tenantThreads_[tenantId] = std::vector<std::thread::id>();
+        tenantThreads_[tenantId] = {};
 
         return true;
     } catch (const fs::filesystem_error& e) {

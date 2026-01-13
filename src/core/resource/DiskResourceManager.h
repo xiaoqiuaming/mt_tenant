@@ -50,7 +50,31 @@ private:
         double allocatedGB = 0.0;      // 已分配磁盘
         double usedGB = 0.0;           // 当前使用磁盘
         double quotaGB = 0.0;          // 磁盘配额
-        std::atomic<double> peakUsage = 0.0;  // 峰值使用
+        std::atomic<double> peakUsage;  // 峰值使用
+
+        DiskStats() : allocatedGB(0.0), usedGB(0.0), quotaGB(0.0), peakUsage(0.0) {}
+        DiskStats(double quota, double allocated, double used, double peak)
+            : allocatedGB(allocated), usedGB(used), quotaGB(quota), peakUsage(peak) {}
+        
+        // Move constructor
+        DiskStats(DiskStats&& other) noexcept
+            : allocatedGB(other.allocatedGB)
+            , usedGB(other.usedGB)
+            , quotaGB(other.quotaGB)
+            , peakUsage(other.peakUsage.load()) {}
+        
+        // Move assignment
+        DiskStats& operator=(DiskStats&& other) noexcept {
+            allocatedGB = other.allocatedGB;
+            usedGB = other.usedGB;
+            quotaGB = other.quotaGB;
+            peakUsage.store(other.peakUsage.load());
+            return *this;
+        }
+        
+        // Delete copy
+        DiskStats(const DiskStats&) = delete;
+        DiskStats& operator=(const DiskStats&) = delete;
     };
 
     std::unordered_map<std::string, DiskStats> tenantDiskStats_;
