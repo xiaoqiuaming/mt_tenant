@@ -1,4 +1,5 @@
 #include "server/trans/TransServer.h"
+#include "common/utils/RequestContext.h"
 #include <iostream>
 
 namespace yao {

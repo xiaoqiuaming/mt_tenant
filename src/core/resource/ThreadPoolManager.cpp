@@ -132,7 +132,7 @@ bool ThreadPoolManager::resizeTenantThreads(const std::string& tenantId, size_t 
     // 检查总线程数限制
     size_t currentAllocated = std::accumulate(
         tenantGroups_.begin(), tenantGroups_.end(), 0UL,
-        [](size_t sum, const auto& pair) {
+        [&tenantId](size_t sum, const auto& pair) {
             if (pair.first != tenantId) {
                 return sum + pair.second->getTotalThreads();
             }

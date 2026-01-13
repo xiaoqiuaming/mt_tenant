@@ -1,5 +1,6 @@
 #pragma once
 
+#include "core/resource/LockFreeQueue.h"
 #include <memory>
 #include <string>
 #include <unordered_map>
@@ -9,7 +10,6 @@ namespace yao {
 
 // 前向声明
 class RequestContext;
-class Task;
 class CpuQuotaChecker;
 class TenantAuthenticator;
 

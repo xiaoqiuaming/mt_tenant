@@ -5,6 +5,8 @@
 #include "core/resource/MemoryResourceManager.h"
 #include "core/resource/MemoryQuotaChecker.h"
 #include "common/config/ConfigManager.h"
+#include "common/utils/RequestContext.h"
+#include "core/tenant/TenantContext.h"
 #include "core/resource/ResourceStats.h"
 #include "core/resource/BasicResourceStats.h"
 #include <iostream>

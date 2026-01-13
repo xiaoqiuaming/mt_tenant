@@ -1,5 +1,6 @@
 #include "server/admin/AdminServer.h"
 #include "core/tenant/TenantManager.h"
+#include "common/utils/RequestContext.h"
 #include <iostream>
 
 namespace yao {
