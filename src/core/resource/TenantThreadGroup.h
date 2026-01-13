@@ -1,6 +1,6 @@
 #pragma once
 
-#include "LockFreeQueue.h"
+#include "core/resource/LockFreeQueue.h"
 #include <string>
 #include <vector>
 #include <thread>

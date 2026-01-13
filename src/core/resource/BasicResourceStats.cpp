@@ -1,64 +1,43 @@
-#include "ResourceStats.h"
-#include <atomic>
+#include "core/resource/BasicResourceStats.h"
 #include <iostream>
 
 namespace yao {
 
-/**
- * @brief 资源统计实现类
- * 提供基本的资源使用统计功能
- */
-class BasicResourceStats : public ResourceStats {
-public:
-    BasicResourceStats() = default;
-    ~BasicResourceStats() override = default;
+BasicResourceStats::BasicResourceStats() 
+    : cpuUsage_(0.0), memoryUsage_(0), diskUsage_(0) {
+}
 
-    double getCpuUsage() const override {
-        return cpuUsage_.load();
-    }
+BasicResourceStats::~BasicResourceStats() = default;
 
-    size_t getMemoryUsage() const override {
-        return memoryUsage_.load();
-    }
+double BasicResourceStats::getCpuUsage() const {
+    return cpuUsage_.load();
+}
 
-    size_t getDiskUsage() const override {
-        return diskUsage_.load();
-    }
+size_t BasicResourceStats::getMemoryUsage() const {
+    return memoryUsage_.load();
+}
 
-    void reset() override {
-        cpuUsage_.store(0.0);
-        memoryUsage_.store(0);
-        diskUsage_.store(0);
-    }
+size_t BasicResourceStats::getDiskUsage() const {
+    return diskUsage_.load();
+}
 
-    /**
-     * @brief 更新CPU使用率
-     * @param usage CPU使用率增量
-     */
-    void updateCpuUsage(double usage) {
-        cpuUsage_.fetch_add(usage);
-    }
+void BasicResourceStats::reset() {
+    cpuUsage_.store(0.0);
+    memoryUsage_.store(0);
+    diskUsage_.store(0);
+}
 
-    /**
-     * @brief 更新内存使用量
-     * @param usage 内存使用量增量
-     */
-    void updateMemoryUsage(size_t usage) {
-        memoryUsage_.fetch_add(usage);
-    }
+void BasicResourceStats::updateCpuUsage(double usage) {
+    double current = cpuUsage_.load();
+    while (!cpuUsage_.compare_exchange_weak(current, current + usage));
+}
 
-    /**
-     * @brief 更新磁盘使用量
-     * @param usage 磁盘使用量增量
-     */
-    void updateDiskUsage(size_t usage) {
-        diskUsage_.fetch_add(usage);
-    }
+void BasicResourceStats::updateMemoryUsage(size_t usage) {
+    memoryUsage_.fetch_add(usage);
+}
 
-private:
-    std::atomic<double> cpuUsage_{0.0};
-    std::atomic<size_t> memoryUsage_{0};
-    std::atomic<size_t> diskUsage_{0};
-};
+void BasicResourceStats::updateDiskUsage(size_t usage) {
+    diskUsage_.fetch_add(usage);
+}
 
 } // namespace yao

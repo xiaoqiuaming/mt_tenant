@@ -1,5 +1,5 @@
-#include "TenantAuthenticator.h"
-#include "../tenant/TenantManager.h"
+#include "core/resource/TenantAuthenticator.h"
+#include "core/tenant/TenantManager.h"
 
 namespace yao {
 

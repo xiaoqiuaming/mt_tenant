@@ -1,4 +1,6 @@
-#include "RequestContext.h"
+#include "common/utils/RequestContext.h"
+#include "core/resource/ResourceStats.h"
+#include "core/tenant/TenantContext.h"
 
 namespace yao {
 

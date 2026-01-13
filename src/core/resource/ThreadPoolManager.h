@@ -1,7 +1,7 @@
 #pragma once
 
-#include "TenantThreadGroup.h"
-#include "CgroupController.h"
+#include "core/resource/TenantThreadGroup.h"
+#include "core/resource/CgroupController.h"
 #include <unordered_map>
 #include <memory>
 #include <mutex>

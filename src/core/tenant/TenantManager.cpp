@@ -1,9 +1,9 @@
-#include "TenantManager.h"
-#include "../resource/CpuResourceManager.h"
-#include "../resource/MemoryResourceManager.h"
-#include "../resource/DiskResourceManager.h"
-#include "../resource/ThreadPoolManager.h"
-#include "../resource/CpuMonitor.h"
+#include "core/tenant/TenantManager.h"
+#include "core/resource/CpuResourceManager.h"
+#include "core/resource/MemoryResourceManager.h"
+#include "core/resource/DiskResourceManager.h"
+#include "core/resource/ThreadPoolManager.h"
+#include "core/resource/CpuMonitor.h"
 #include <stdexcept>
 
 namespace yao {

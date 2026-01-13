@@ -1,4 +1,4 @@
-#include "CpuResourceManager.h"
+#include "core/resource/CpuResourceManager.h"
 #include <iostream>  // 临时用于输出，实际应使用日志
 
 namespace yao {

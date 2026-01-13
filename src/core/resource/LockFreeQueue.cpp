@@ -1,4 +1,4 @@
-#include "LockFreeQueue.h"
+#include "core/resource/LockFreeQueue.h"
 #include <iostream>
 
 namespace yao {

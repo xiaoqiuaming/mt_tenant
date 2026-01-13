@@ -1,5 +1,5 @@
-#include "CpuMonitor.h"
-#include "CpuResourceManager.h"
+#include "core/resource/CpuMonitor.h"
+#include "core/resource/CpuResourceManager.h"
 #include <chrono>
 #include <thread>
 #include <iostream>

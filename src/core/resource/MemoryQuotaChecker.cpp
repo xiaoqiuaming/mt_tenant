@@ -1,6 +1,6 @@
-#include "MemoryQuotaChecker.h"
-#include "TenantContext.h"
-#include "MemoryResourceManager.h"
+#include "core/resource/MemoryQuotaChecker.h"
+#include "core/tenant/TenantContext.h"
+#include "core/resource/MemoryResourceManager.h"
 #include <iostream>
 
 namespace yao {

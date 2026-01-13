@@ -8,7 +8,12 @@
 #include "core/tenant/TenantManager.h"
 #include "core/resource/BasicResourceStats.h"
 #include "core/resource/CpuResourceManager.h"
+#include "core/resource/MemoryResourceManager.h"
+#include "core/resource/DiskResourceManager.h"
+#include "core/resource/CpuMonitor.h"
 #include "core/resource/ThreadPoolManager.h"
+#include "core/resource/CpuQuotaChecker.h"
+#include "core/resource/TenantAuthenticator.h"
 #include "common/config/ConfigManager.h"
 #include "common/utils/Exceptions.h"
 #include "common/utils/RequestContext.h"
@@ -17,6 +22,10 @@
 #include "server/data/DataServer.h"
 #include "server/trans/TransServer.h"
 #include "server/admin/AdminServer.h"
+
+// Forward declarations
+int runUnitTests();
+int runBenchmarkTests();
 
 int main(int argc, char* argv[]) {
     using namespace yao;

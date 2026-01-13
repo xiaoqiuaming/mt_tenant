@@ -48,6 +48,27 @@ public:
      */
     bool getBool(const std::string& key, bool defaultValue = false) const;
 
+    /**
+     * @brief 设置配置值
+     * @param key 配置键
+     * @param value 配置值
+     */
+    void setString(const std::string& key, const std::string& value);
+
+    /**
+     * @brief 设置整数配置值
+     * @param key 配置键
+     * @param value 配置值
+     */
+    void setInt(const std::string& key, int value);
+
+    /**
+     * @brief 设置布尔配置值
+     * @param key 配置键
+     * @param value 配置值
+     */
+    void setBool(const std::string& key, bool value);
+
 private:
     ConfigManager() = default;
     ~ConfigManager() = default;

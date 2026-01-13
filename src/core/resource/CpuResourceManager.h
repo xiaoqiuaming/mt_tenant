@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ResourceStats.h"
-#include "TenantContext.h"
+#include "core/resource/ResourceStats.h"
+#include "core/tenant/TenantContext.h"
 #include <unordered_map>
 #include <memory>
 #include <mutex>

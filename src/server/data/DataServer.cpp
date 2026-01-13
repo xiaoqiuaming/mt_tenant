@@ -1,6 +1,8 @@
-#include "DataServer.h"
-#include "DiskResourceManager.h"
-#include "DiskQuotaChecker.h"
+#include "server/data/DataServer.h"
+#include "core/resource/DiskResourceManager.h"
+#include "core/resource/DiskQuotaChecker.h"
+#include "common/utils/RequestContext.h"
+#include "core/tenant/TenantContext.h"
 #include <iostream>
 
 namespace yao {

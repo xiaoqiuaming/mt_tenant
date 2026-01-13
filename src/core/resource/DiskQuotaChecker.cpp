@@ -1,6 +1,6 @@
-#include "DiskQuotaChecker.h"
-#include "TenantContext.h"
-#include "DiskResourceManager.h"
+#include "core/resource/DiskQuotaChecker.h"
+#include "core/tenant/TenantContext.h"
+#include "core/resource/DiskResourceManager.h"
 #include <iostream>
 
 namespace yao {
