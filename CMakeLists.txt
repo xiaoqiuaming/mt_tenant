@@ -37,5 +37,7 @@ set(SOURCES
 # 可执行文件
 add_executable(yaobase_tenant ${SOURCES})
 
-# 链接库（如果需要）
-# target_link_libraries(yaobase_tenant pthread)
+# MinGW/GCC 在 C++17 下的 std::filesystem 需要显式链接 stdc++fs
+if (MINGW OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_libraries(yaobase_tenant stdc++fs)
+endif()
